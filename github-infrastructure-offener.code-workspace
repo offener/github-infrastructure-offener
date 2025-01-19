@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {},
+	"extensions": {
+		"recommendations": [
+			"ms-vscode.vscode-typescript-next",
+			"pulumi.pulumi-vscode-tools"
+		]
+	}
+}
