@@ -1,0 +1,2 @@
+# Ignore node_modules folders for all Node.js projects to improve devcontainer performance
+**/node_modules

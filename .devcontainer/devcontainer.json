@@ -1,16 +1,18 @@
 {
 	"name": "infrastructure-github-offener",
-	"image": "mcr.microsoft.com/devcontainers/base:jammy",
+	"build": {
+		"dockerfile": "dockerfile"
+	},
 	"features": {
-		"ghcr.io/devcontainers-extra/features/pulumi:1": {},
-		"ghcr.io/devcontainers/features/node:1": {},
-		"ghcr.io/devcontainers/features/github-cli:1": {}
 	},
 	"customizations": {
 		"vscode": {
 			"extensions": [
 				"ms-vscode.vscode-typescript-next",
-				"pulumi.pulumi-vscode-tools"
+				"pulumi.pulumi-vscode-tools",
+				"hashicorp.terraform",
+				"ms-python.python",
+				"ms-python.debugpy"
 			]
 		}
 	}
