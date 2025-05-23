@@ -8,6 +8,12 @@ on:
     branches: [main]
   workflow_dispatch:
 
+env:
+  AZURE_RESOURCE_GROUP_NAME: ${{ secrets.AZURE_RESOURCE_GROUP_NAME }}
+  AZURE_STORAGE_ACCOUNT_NAME: ${{ secrets.AZURE_STORAGE_ACCOUNT_NAME }}
+  AZURE_CONTAINER_NAME: ${{ secrets.AZURE_CONTAINER_NAME }}
+  AZURE_TFSTATE_KEY: $ {{ secrets.AZURE_TFSTATE_KEY }}
+
 jobs:
   diff:
     runs-on: ubuntu-latest
@@ -34,4 +40,14 @@ jobs:
 
       - name: Run cdktf diff
         run: cdktf diff
+
+  # another_job:
+  #   runs-on: ubuntu-latest
+  #   env:
+  #     AZURE_RESOURCE_GROUP_NAME: ${{ secrets.AZURE_RESOURCE_GROUP_NAME }}
+  #     AZURE_STORAGE_ACCOUNT_NAME: ${{ secrets.AZURE_STORAGE_ACCOUNT_NAME }}
+  #     AZURE_CONTAINER_NAME: ${{ secrets.AZURE_CONTAINER_NAME }}
+  #     AZURE_TFSTATE_KEY: ${{ secrets.AZURE_TFSTATE_KEY }}
+  #   steps:
+  #     ...existing code...
 
