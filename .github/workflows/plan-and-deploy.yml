@@ -49,13 +49,16 @@ jobs:
       - name: Run cdktf diff
         run: cdktf diff
 
-  # another_job:
-  #   runs-on: ubuntu-latest
-  #   env:
-  #     AZURE_RESOURCE_GROUP_NAME: ${{ secrets.AZURE_RESOURCE_GROUP_NAME }}
-  #     AZURE_STORAGE_ACCOUNT_NAME: ${{ secrets.AZURE_STORAGE_ACCOUNT_NAME }}
-  #     AZURE_CONTAINER_NAME: ${{ secrets.AZURE_CONTAINER_NAME }}
-  #     AZURE_TFSTATE_KEY: ${{ secrets.AZURE_TFSTATE_KEY }}
-  #   steps:
-  #     ...existing code...
+      - name: Await manual approval
+        uses: trstringer/manual-approval@v1
+        with:
+          secret: ${{ github.TOKEN }}
+          approvers: user1,user2
+          minimum-approvals: 1
+          issue-title: "Manual approval required before deployment"
+          issue-body: "Please approve this workflow to continue deployment."
+          exclude-workflow-initiator-as-approver: false
 
+      - name: Run cdktf deploy
+        run: echo "works"
+        # run: cdktf deploy --auto-approve
